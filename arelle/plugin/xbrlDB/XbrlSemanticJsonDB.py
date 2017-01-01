@@ -130,7 +130,7 @@ def jsonDefaultEncoder(obj):
         return float(obj)
     elif isinstance(obj, (datetime.date, datetime.datetime)):
         return XmlUtil.dateunionValue(obj)
-    raise TypeError("Type {} is not supported for json output".format(type(obj).__name__))
+    return repr(obj)
 
 class XbrlSemanticJsonDatabaseConnection():
     def __init__(self, modelXbrl, user, password, host, port, database, timeout):

@@ -624,6 +624,8 @@ class IsoDuration(isodate.Duration):
         return super(IsoDuration, self).__str__() # textual words form of duration
     def __str__(self):
         return self.sourceValue
+    def __repr__(self):
+        return self.sourceValue
     
 class InvalidValue(str):
     def __new__(cls, value):
