@@ -6,6 +6,7 @@ Created on Oct 3, 2010
 '''
 import gc, sys, traceback, logging
 from arelle import ModelXbrl, Validate, DisclosureSystem
+from arelle.ModelFormulaObject import FormulaOptions
 from arelle.PluginManager import pluginClassMethods
 
 def initialize(cntlr):
@@ -68,6 +69,7 @@ class ModelManager:
         self.locale = Locale.getUserLocale(cntlr.config.get("userInterfaceLocaleOverride",""))
         self.defaultLang = Locale.getLanguageCode()
         self.customTransforms = None
+        self.formulaOptions = FormulaOptions()
 
     def shutdown(self):
         self.status = "shutdown"
