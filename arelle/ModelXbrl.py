@@ -1108,8 +1108,8 @@ class ModelXbrl:
         if messageCode == "asrtNoLog":
             self.errors.append(args["assertionResults"])
         elif (messageCode and
-              (not logger.messageCodeFilter or logger.messageCodeFilter.match(messageCode)) and
-              (not logger.messageLevelFilter or logger.messageLevelFilter.match(level.lower()))):
+              (not getattr(logger, 'messageCodeFilter', None) or logger.messageCodeFilter.match(messageCode)) and
+              (not getattr(logger, 'messageLevelFilter', None) or logger.messageLevelFilter.match(level.lower()))):
             numericLevel = logging._checkLevel(level)
             self.logCount[numericLevel] = self.logCount.get(numericLevel, 0) + 1
             if numericLevel >= self.errorCaptureLevel:
