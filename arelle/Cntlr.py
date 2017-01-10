@@ -93,7 +93,7 @@ class Cntlr:
     """
     __version__ = "1.6.0"
     
-    def __init__(self, hasGui=False, logFileName=None, logFileMode=None, logFileEncoding=None, logFormat=None):
+    def __init__(self, hasGui=False, logFileName=None, logFileMode=None, logFileEncoding=None, logFormat=None, logHandler=None):
         self.hasWin32gui = False
         self.hasGui = hasGui
         self.hasFileSystem = True # no file system on Google App Engine servers
@@ -238,7 +238,7 @@ class Cntlr:
         # start taxonomy package server (requres web cache initialized, but not logger)
         PackageManager.init(self, loadPackagesConfig=hasGui)
  
-        self.startLogging(logFileName, logFileMode, logFileEncoding, logFormat)
+        self.startLogging(logFileName, logFileMode, logFileEncoding, logFormat, logHandler=logHandler)
         
         # Cntlr.Init after logging started
         for pluginMethod in PluginManager.pluginClassMethods("Cntlr.Init"):
