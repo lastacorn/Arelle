@@ -334,7 +334,14 @@ class ModelFact(ModelObject):
             elif self.concept.fixed is not None:
                 v = self.concept.fixed
         return v
-    
+
+    @property
+    def decimalValue(self):
+        """(decimal.Decimal) -- Decimal value if isNumeric, otherwise None"""
+        if not self.isNumeric:
+            return None
+        return self.xValue
+
     @property
     def fractionValue(self):
         """( (str,str) ) -- (text value of numerator, text value of denominator)"""
